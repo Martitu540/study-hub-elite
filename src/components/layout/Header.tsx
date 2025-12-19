@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Search, BookOpen } from "lucide-react";
+import { Menu, X, Search, BookOpen, Moon, Sun, LogOut, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useTheme } from "@/contexts/ThemeContext";
+import { useAuth } from "@/contexts/AuthContext";
 
 const navigation = [
   { name: "Articles", href: "/category/articles" },
@@ -14,6 +16,12 @@ const navigation = [
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { resolvedTheme, setTheme } = useTheme();
+  const { user, signOut } = useAuth();
+
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-divider">
@@ -46,12 +54,19 @@ export function Header() {
 
         {/* Actions */}
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" className="text-body">
-            <Search className="w-5 h-5" />
+          <Button variant="ghost" size="icon" onClick={toggleTheme} className="text-body">
+            {resolvedTheme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </Button>
-          <Button variant="default" size="sm" className="hidden sm:inline-flex">
-            Get Started
-          </Button>
+          
+          {user ? (
+            <Button variant="ghost" size="icon" onClick={signOut} className="text-body">
+              <LogOut className="w-5 h-5" />
+            </Button>
+          ) : (
+            <Button variant="default" size="sm" className="hidden sm:inline-flex" asChild>
+              <Link to="/auth">Sign In</Link>
+            </Button>
+          )}
           
           {/* Mobile menu button */}
           <Button
@@ -85,9 +100,16 @@ export function Header() {
               </Link>
             ))}
             <div className="pt-3 px-4">
-              <Button variant="default" className="w-full">
-                Get Started
-              </Button>
+              {user ? (
+                <Button variant="outline" className="w-full" onClick={signOut}>
+                  <LogOut className="w-4 h-4" />
+                  Sign Out
+                </Button>
+              ) : (
+                <Button variant="default" className="w-full" asChild>
+                  <Link to="/auth" onClick={() => setMobileMenuOpen(false)}>Sign In</Link>
+                </Button>
+              )}
             </div>
           </div>
         </div>
