@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Search, BookOpen, Moon, Sun, LogOut, User } from "lucide-react";
+import { Menu, X, BookOpen, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/contexts/ThemeContext";
-import { useAuth } from "@/contexts/AuthContext";
 
 const navigation = [
   { name: "Articles", href: "/category/articles" },
@@ -17,7 +16,6 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const { resolvedTheme, setTheme } = useTheme();
-  const { user, signOut } = useAuth();
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
@@ -58,16 +56,6 @@ export function Header() {
             {resolvedTheme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </Button>
           
-          {user ? (
-            <Button variant="ghost" size="icon" onClick={signOut} className="text-body">
-              <LogOut className="w-5 h-5" />
-            </Button>
-          ) : (
-            <Button variant="default" size="sm" className="hidden sm:inline-flex" asChild>
-              <Link to="/auth">Sign In</Link>
-            </Button>
-          )}
-          
           {/* Mobile menu button */}
           <Button
             variant="ghost"
@@ -99,18 +87,6 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
-            <div className="pt-3 px-4">
-              {user ? (
-                <Button variant="outline" className="w-full" onClick={signOut}>
-                  <LogOut className="w-4 h-4" />
-                  Sign Out
-                </Button>
-              ) : (
-                <Button variant="default" className="w-full" asChild>
-                  <Link to="/auth" onClick={() => setMobileMenuOpen(false)}>Sign In</Link>
-                </Button>
-              )}
-            </div>
           </div>
         </div>
       )}
