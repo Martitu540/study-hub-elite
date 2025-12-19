@@ -82,6 +82,12 @@ const tools = [
     slug: "pomodoro-timer",
   },
   {
+    title: "Study Plan Generator",
+    description: "Create a personalized study schedule for your exams.",
+    icon: Brain,
+    slug: "study-plan-generator",
+  },
+  {
     title: "GPA Calculator",
     description: "Calculate your grade point average quickly and accurately.",
     icon: Calculator,
@@ -92,12 +98,6 @@ const tools = [
     description: "Create digital flashcards for effective memorization.",
     icon: FileText,
     slug: "flashcard-maker",
-  },
-  {
-    title: "Study Planner",
-    description: "Plan your study schedule and track your progress.",
-    icon: Brain,
-    slug: "study-planner",
   },
 ];
 
