@@ -3,7 +3,7 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { ToolCard } from "@/components/ToolCard";
 import { AdPlaceholder } from "@/components/AdPlaceholder";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calculator, Clock, FileText, Brain, Sparkles } from "lucide-react";
+import { ArrowRight, Calculator, Clock, FileText, CalendarDays, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const featuredArticles = [
@@ -62,6 +62,12 @@ const tools = [
     slug: "pomodoro-timer",
   },
   {
+    title: "Study Plan Generator",
+    description: "Create a personalized study schedule for your exams.",
+    icon: CalendarDays,
+    slug: "study-plan-generator",
+  },
+  {
     title: "GPA Calculator",
     description: "Calculate your grade point average quickly and accurately.",
     icon: Calculator,
@@ -72,12 +78,6 @@ const tools = [
     description: "Create digital flashcards for effective memorization.",
     icon: FileText,
     slug: "flashcard-maker",
-  },
-  {
-    title: "Study Planner",
-    description: "Plan your study schedule and track your progress.",
-    icon: Brain,
-    slug: "study-planner",
   },
 ];
 
