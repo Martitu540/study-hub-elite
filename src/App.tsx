@@ -11,6 +11,10 @@ import StudyPlanTool from "./pages/StudyPlanTool";
 import GpaCalculatorTool from "./pages/GpaCalculatorTool";
 import FlashcardMakerTool from "./pages/FlashcardMakerTool";
 import Category from "./pages/Category";
+import About from "./pages/About";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +34,10 @@ const App = () => (
             <Route path="/tool/gpa-calculator" element={<GpaCalculatorTool />} />
             <Route path="/tool/flashcard-maker" element={<FlashcardMakerTool />} />
             <Route path="/category/:slug" element={<Category />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </HashRouter>
