@@ -11,12 +11,15 @@ const footerLinks = {
   company: [
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
-    { name: "Careers", href: "/careers" },
   ],
   legal: [
     { name: "Privacy", href: "/privacy" },
     { name: "Terms", href: "/terms" },
   ],
+};
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 export function Footer() {
@@ -26,7 +29,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <Link to="/" className="flex items-center gap-2 font-semibold text-heading mb-4">
+            <Link to="/" onClick={scrollToTop} className="flex items-center gap-2 font-semibold text-heading mb-4">
               <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-primary-foreground">
                 <BookOpen className="w-4 h-4" />
               </div>
@@ -45,6 +48,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     to={link.href}
+                    onClick={scrollToTop}
                     className="text-caption text-body hover:text-primary transition-colors"
                   >
                     {link.name}
@@ -62,6 +66,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     to={link.href}
+                    onClick={scrollToTop}
                     className="text-caption text-body hover:text-primary transition-colors"
                   >
                     {link.name}
@@ -79,6 +84,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     to={link.href}
+                    onClick={scrollToTop}
                     className="text-caption text-body hover:text-primary transition-colors"
                   >
                     {link.name}
