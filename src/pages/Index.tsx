@@ -5,54 +5,7 @@ import { AdPlaceholder } from "@/components/AdPlaceholder";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calculator, Clock, FileText, CalendarDays, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
-
-const featuredArticles = [
-  {
-    title: "The Pomodoro Technique: A Complete Guide to Focused Studying",
-    excerpt: "Learn how to use timed study sessions to maximize your productivity and retain information better.",
-    category: "Study Tips",
-    readTime: "8 min",
-    slug: "pomodoro-technique-guide",
-  },
-  {
-    title: "How to Create Effective Study Notes That Actually Work",
-    excerpt: "Discover proven note-taking methods that help you understand and remember complex topics.",
-    category: "Study Tips",
-    readTime: "6 min",
-    slug: "effective-study-notes",
-  },
-  {
-    title: "Preparing for Finals: Your 4-Week Study Plan",
-    excerpt: "A structured approach to exam preparation that reduces stress and improves performance.",
-    category: "Exam Prep",
-    readTime: "10 min",
-    slug: "finals-study-plan",
-  },
-];
-
-const latestArticles = [
-  {
-    title: "Understanding Active Recall and Spaced Repetition",
-    excerpt: "The science-backed learning techniques that top students use to ace their exams.",
-    category: "Learning Science",
-    readTime: "7 min",
-    slug: "active-recall-spaced-repetition",
-  },
-  {
-    title: "Best Apps for Student Productivity in 2024",
-    excerpt: "A curated list of tools that will help you stay organized and focused.",
-    category: "Resources",
-    readTime: "5 min",
-    slug: "student-productivity-apps",
-  },
-  {
-    title: "Managing Test Anxiety: Practical Strategies",
-    excerpt: "Learn how to stay calm and perform your best when exam pressure hits.",
-    category: "Wellness",
-    readTime: "6 min",
-    slug: "managing-test-anxiety",
-  },
-];
+import { articles } from "@/data/articles";
 
 const tools = [
   {
@@ -80,6 +33,10 @@ const tools = [
     slug: "flashcard-maker",
   },
 ];
+
+// Get featured and latest from real articles
+const featuredArticles = articles.slice(0, 3);
+const latestArticles = articles.slice(3, 6);
 
 export default function Index() {
   return (
@@ -129,7 +86,15 @@ export default function Index() {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 stagger-children">
           {featuredArticles.map((article) => (
-            <ArticleCard key={article.slug} {...article} featured />
+            <ArticleCard
+              key={article.slug}
+              title={article.title}
+              excerpt={article.excerpt}
+              category={article.category}
+              readTime={article.readTime}
+              slug={article.slug}
+              featured
+            />
           ))}
         </div>
       </section>
@@ -171,7 +136,14 @@ export default function Index() {
               <h2 className="text-subtitle font-bold text-heading mb-8">Latest Articles</h2>
               <div className="space-y-5 stagger-children">
                 {latestArticles.map((article) => (
-                  <ArticleCard key={article.slug} {...article} />
+                  <ArticleCard
+                    key={article.slug}
+                    title={article.title}
+                    excerpt={article.excerpt}
+                    category={article.category}
+                    readTime={article.readTime}
+                    slug={article.slug}
+                  />
                 ))}
               </div>
               <div className="mt-8">
@@ -191,7 +163,7 @@ export default function Index() {
               <div className="bg-card rounded-xl border border-border p-6">
                 <h3 className="font-semibold text-heading mb-4">Categories</h3>
                 <ul className="space-y-2">
-                  {["Study Tips", "Exam Prep", "Productivity", "Learning Science", "Resources"].map(
+                  {["Study Tips", "Exam Prep", "Learning Science", "Productivity", "Resources"].map(
                     (category) => (
                       <li key={category}>
                         <Link
@@ -207,11 +179,13 @@ export default function Index() {
               </div>
 
               <div className="bg-accent rounded-xl p-6">
-                <h3 className="font-semibold text-heading mb-2">Stay Updated</h3>
+                <h3 className="font-semibold text-heading mb-2">Try Our Free Tools</h3>
                 <p className="text-caption text-body mb-4">
-                  Get weekly study tips delivered to your inbox.
+                  Boost your study sessions with our Pomodoro Timer.
                 </p>
-                <Button size="sm" className="w-full">Subscribe</Button>
+                <Button size="sm" className="w-full" asChild>
+                  <Link to="/tool/pomodoro-timer">Start Timer</Link>
+                </Button>
               </div>
             </aside>
           </div>
