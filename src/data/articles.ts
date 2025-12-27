@@ -27,74 +27,76 @@ export interface ArticleContent {
 
 export const articles: ArticleData[] = [
   {
+ {
   slug: "daily-study-routine-that-works",
   title: "How to Build a Daily Study Routine That Actually Works",
-  description:
+  excerpt:
     "Learn how to create a realistic daily study routine that improves focus, reduces procrastination, and helps you study more effectively.",
   category: "Study Skills",
-  publishedAt: "2025-01-05",
-  readingTime: "7 min read",
-  content: `
-<h2>Introduction</h2>
-<p>
-Building a daily study routine sounds simple, but many students struggle to stick to one.
-Between distractions, motivation drops, and poor planning, even the best intentions fall apart.
-The good news is that an effective study routine doesn’t require studying all day —
-it requires structure, consistency, and the right tools.
-</p>
+  readTime: "7 min",
+  publishDate: "2025-01-05",
+  relatedTools: ["pomodoro-timer", "study-plan-generator"],
+  relatedArticles: ["pomodoro-technique-guide", "effective-study-notes"],
+  content: {
+    intro:
+      "Building a daily study routine sounds simple, but many students struggle to stick to one. Between distractions, motivation drops, and poor planning, even the best intentions fall apart. The good news is that an effective study routine doesn’t require studying all day — it requires structure, consistency, and the right tools.",
 
-<h2>1. Start With Clear Study Goals</h2>
-<p>
-A study routine without goals quickly becomes unfocused.
-Before planning your day, decide what you want to accomplish.
-</p>
-<ul>
-  <li>Be specific (e.g. finish Chapter 3 notes)</li>
-  <li>Keep goals realistic</li>
-  <li>Make progress measurable</li>
-</ul>
+    sections: [
+      {
+        heading: "Start With Clear Study Goals",
+        content:
+          "A study routine without goals quickly becomes unfocused. Before planning your day, decide what you want to accomplish.",
+        listItems: [
+          "Be specific (e.g. finish Chapter 3 notes)",
+          "Keep goals realistic",
+          "Make progress measurable",
+        ],
+      },
+      {
+        heading: "Plan Your Day in Advance",
+        content:
+          "Successful students don’t decide what to study at the last minute. Planning ahead reduces procrastination and stress.",
+      },
+      {
+        heading: "Use Time Blocking and the Pomodoro Technique",
+        content:
+          "Studying for long hours without breaks leads to burnout. The Pomodoro Technique helps maintain focus by working in short, timed sessions.",
+      },
+      {
+        heading: "Choose the Right Study Environment",
+        content:
+          "Your environment plays a major role in how productive your study sessions are. Try to study in the same location every day and remove distractions.",
+      },
+      {
+        heading: "Review and Adjust Your Routine",
+        content:
+          "No routine is perfect at first. Review what works weekly and make small adjustments.",
+      },
+    ],
 
-<h2>2. Plan Your Day in Advance</h2>
-<p>
-Successful students don’t decide what to study at the last minute.
-Planning ahead reduces procrastination and stress.
-</p>
+    conclusion:
+      "A daily study routine works best when it’s realistic and flexible. Start small, stay consistent, and adjust as needed.",
 
-<h2>3. Use Time Blocking and the Pomodoro Technique</h2>
-<p>
-Studying for long hours without breaks leads to burnout.
-The Pomodoro Technique helps maintain focus by working in short, timed sessions.
-</p>
-
-<h2>4. Choose the Right Study Environment</h2>
-<p>
-Your environment plays a major role in how productive your study sessions are.
-Try to study in the same location every day and remove distractions.
-</p>
-
-<h2>5. Review and Adjust Your Routine</h2>
-<p>
-No routine is perfect at first.
-Review what works weekly and make small adjustments.
-</p>
-
-<h2>Frequently Asked Questions</h2>
-<p><strong>How many hours should I study per day?</strong><br />
-Most students benefit from 2–5 focused hours per day.</p>
-
-<p><strong>Is it okay to study every day?</strong><br />
-Yes, as long as you include breaks and lighter days.</p>
-
-<p><strong>What if I miss a day?</strong><br />
-Missing a day is normal. Focus on consistency, not perfection.</p>
-
-<h2>Final Thoughts</h2>
-<p>
-A daily study routine works best when it’s realistic and flexible.
-Start small, stay consistent, and adjust as needed.
-</p>
-`
-}
+    faq: [
+      {
+        question: "How many hours should I study per day?",
+        answer:
+          "Most students benefit from 2–5 focused hours per day. Quality matters more than quantity.",
+      },
+      {
+        question: "Is it okay to study every day?",
+        answer:
+          "Yes, as long as you include breaks and lighter days to avoid burnout.",
+      },
+      {
+        question: "What if I miss a day?",
+        answer:
+          "Missing a day is normal. Focus on consistency, not perfection.",
+      },
+    ],
+  },
+},
+  {
 
     slug: "pomodoro-technique-guide",
     title: "The Pomodoro Technique: A Complete Guide to Focused Studying",
