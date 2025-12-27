@@ -27,7 +27,6 @@ export interface ArticleContent {
 
 export const articles: ArticleData[] = [
   {
- {
   slug: "daily-study-routine-that-works",
   title: "How to Build a Daily Study Routine That Actually Works",
   excerpt:
