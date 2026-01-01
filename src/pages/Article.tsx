@@ -123,12 +123,12 @@ export default function Article() {
         </header>
 
         {/* Article Content */}
-        <div className="container py-8 md:py-12">
-          <div className="grid lg:grid-cols-3 gap-8">
+        <div className="container py-6 md:py-12">
+          <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
             {/* Main Content */}
             <div className="lg:col-span-2">
-              <div className="max-w-3xl prose">
-                <p className="text-body-lg text-body mb-8 font-serif italic">
+              <div className="max-w-3xl prose prose-sm md:prose">
+                <p className="text-base md:text-body-lg text-body mb-6 md:mb-8 font-serif italic">
                   {article.content.intro}
                 </p>
 
@@ -146,7 +146,7 @@ export default function Article() {
                     
                     {/* Insert inline ad after second section */}
                     {index === 1 && (
-                      <div className="my-8 not-prose">
+                      <div className="my-6 md:my-8 not-prose">
                         <AdPlaceholder variant="inline" />
                       </div>
                     )}
@@ -157,20 +157,25 @@ export default function Article() {
                 <p>{article.content.conclusion}</p>
               </div>
 
+              {/* Mobile Ad before FAQ */}
+              <div className="lg:hidden my-6">
+                <AdPlaceholder variant="banner" />
+              </div>
+
               {/* FAQ Section */}
               {article.content.faq && article.content.faq.length > 0 && (
-                <section className="mt-10 pt-8 border-t border-divider">
-                  <div className="flex items-center gap-2 mb-6">
+                <section className="mt-8 md:mt-10 pt-6 md:pt-8 border-t border-divider">
+                  <div className="flex items-center gap-2 mb-4 md:mb-6">
                     <HelpCircle className="w-5 h-5 text-primary" />
-                    <h2 className="text-subtitle font-bold text-heading">Frequently Asked Questions</h2>
+                    <h2 className="text-lg md:text-subtitle font-bold text-heading">Frequently Asked Questions</h2>
                   </div>
                   <Accordion type="single" collapsible className="w-full">
                     {article.content.faq.map((faq, index) => (
                       <AccordionItem key={index} value={`faq-${index}`}>
-                        <AccordionTrigger className="text-left text-body font-medium">
+                        <AccordionTrigger className="text-left text-sm md:text-body font-medium">
                           {faq.question}
                         </AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
+                        <AccordionContent className="text-sm md:text-base text-muted-foreground">
                           {faq.answer}
                         </AccordionContent>
                       </AccordionItem>
@@ -181,12 +186,12 @@ export default function Article() {
 
               {/* Related Tools CTA */}
               {article.relatedTools.length > 0 && (
-                <section className="mt-10 bg-accent rounded-xl p-6">
+                <section className="mt-8 md:mt-10 bg-accent rounded-xl p-4 md:p-6">
                   <h3 className="font-semibold text-heading mb-2">Try Our Free Tools</h3>
-                  <p className="text-caption text-body mb-4">
+                  <p className="text-xs md:text-caption text-body mb-4">
                     Put what you've learned into practice with our study tools.
                   </p>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2 md:gap-3">
                     {article.relatedTools.map((toolSlug) => (
                       <Button key={toolSlug} variant="secondary" size="sm" asChild>
                         <Link to={`/tool/${toolSlug}`}>
@@ -199,7 +204,7 @@ export default function Article() {
               )}
 
               {/* Share Actions */}
-              <div className="mt-10 pt-8 border-t border-divider flex flex-wrap items-center gap-3">
+              <div className="mt-8 md:mt-10 pt-6 md:pt-8 border-t border-divider flex flex-wrap items-center gap-2 md:gap-3">
                 <Button variant="outline" size="sm">
                   <Share2 className="w-4 h-4" />
                   Share
@@ -212,9 +217,9 @@ export default function Article() {
 
               {/* Related Articles */}
               {relatedArticleData.length > 0 && (
-                <section className="mt-12 pt-8 border-t border-divider">
-                  <h2 className="text-subtitle font-bold text-heading mb-6">Related Articles</h2>
-                  <div className="grid sm:grid-cols-2 gap-5">
+                <section className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-divider">
+                  <h2 className="text-lg md:text-subtitle font-bold text-heading mb-4 md:mb-6">Related Articles</h2>
+                  <div className="grid sm:grid-cols-2 gap-4 md:gap-5">
                     {relatedArticleData.map((relatedArticle) => (
                       <ArticleCard
                         key={relatedArticle.slug}
@@ -230,8 +235,8 @@ export default function Article() {
               )}
             </div>
 
-            {/* Sidebar */}
-            <aside className="space-y-6">
+            {/* Sidebar - Hidden on mobile */}
+            <aside className="hidden lg:block space-y-6">
               <div className="sticky top-24">
                 <AdPlaceholder variant="sidebar" />
                 
@@ -262,6 +267,11 @@ export default function Article() {
                 </div>
               </div>
             </aside>
+          </div>
+
+          {/* Bottom Mobile Ad */}
+          <div className="lg:hidden mt-6">
+            <AdPlaceholder variant="banner" />
           </div>
         </div>
       </article>

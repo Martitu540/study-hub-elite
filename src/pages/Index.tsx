@@ -72,9 +72,9 @@ export default function Index() {
       </section>
 
       {/* Featured Articles */}
-      <section className="container py-12 md:py-16">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-subtitle font-bold text-heading">Featured Articles</h2>
+      <section className="container py-8 md:py-16">
+        <div className="flex items-center justify-between mb-6 md:mb-8">
+          <h2 className="text-lg md:text-subtitle font-bold text-heading">Featured Articles</h2>
           <Link 
             to="/category/articles" 
             className="text-caption font-medium text-primary hover:underline flex items-center gap-1"
@@ -84,7 +84,7 @@ export default function Index() {
           </Link>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 stagger-children">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 stagger-children">
           {featuredArticles.map((article) => (
             <ArticleCard
               key={article.slug}
@@ -99,17 +99,22 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Ad Banner */}
-      <div className="container">
+      {/* Mobile Ad After Featured */}
+      <div className="container md:hidden pb-4">
+        <AdPlaceholder variant="inline" />
+      </div>
+
+      {/* Ad Banner - Desktop */}
+      <div className="container hidden md:block">
         <AdPlaceholder variant="banner" />
       </div>
 
       {/* Tools Section */}
-      <section className="container py-12 md:py-16">
-        <div className="flex items-center justify-between mb-8">
+      <section className="container py-8 md:py-16">
+        <div className="flex items-center justify-between mb-6 md:mb-8">
           <div>
-            <h2 className="text-subtitle font-bold text-heading mb-1">Free Study Tools</h2>
-            <p className="text-caption text-body">Boost your productivity with our collection of tools</p>
+            <h2 className="text-lg md:text-subtitle font-bold text-heading mb-1">Free Study Tools</h2>
+            <p className="text-xs md:text-caption text-body">Boost your productivity with our collection of tools</p>
           </div>
           <Link 
             to="/category/tools" 
@@ -120,33 +125,45 @@ export default function Index() {
           </Link>
         </div>
         
-        <div className="grid sm:grid-cols-2 gap-4 stagger-children">
+        <div className="grid sm:grid-cols-2 gap-3 md:gap-4 stagger-children">
           {tools.map((tool) => (
             <ToolCard key={tool.slug} {...tool} />
           ))}
         </div>
       </section>
 
+      {/* Mobile Ad After Tools */}
+      <div className="container md:hidden pb-4">
+        <AdPlaceholder variant="inline" />
+      </div>
+
       {/* Latest Articles with Sidebar */}
       <section className="bg-surface border-y border-divider">
-        <div className="container py-12 md:py-16">
-          <div className="grid lg:grid-cols-3 gap-8">
+        <div className="container py-8 md:py-16">
+          <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
             {/* Main Content */}
             <div className="lg:col-span-2">
-              <h2 className="text-subtitle font-bold text-heading mb-8">Latest Articles</h2>
-              <div className="space-y-5 stagger-children">
-                {latestArticles.map((article) => (
-                  <ArticleCard
-                    key={article.slug}
-                    title={article.title}
-                    excerpt={article.excerpt}
-                    category={article.category}
-                    readTime={article.readTime}
-                    slug={article.slug}
-                  />
+              <h2 className="text-lg md:text-subtitle font-bold text-heading mb-6 md:mb-8">Latest Articles</h2>
+              <div className="space-y-4 md:space-y-5 stagger-children">
+                {latestArticles.map((article, index) => (
+                  <div key={article.slug}>
+                    <ArticleCard
+                      title={article.title}
+                      excerpt={article.excerpt}
+                      category={article.category}
+                      readTime={article.readTime}
+                      slug={article.slug}
+                    />
+                    {/* Mobile inline ad after first article */}
+                    {index === 0 && (
+                      <div className="mt-4 lg:hidden">
+                        <AdPlaceholder variant="inline" />
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
-              <div className="mt-8">
+              <div className="mt-6 md:mt-8">
                 <Button variant="outline" asChild>
                   <Link to="/category/articles">
                     Load More Articles
@@ -156,8 +173,8 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Sidebar */}
-            <aside className="space-y-6">
+            {/* Sidebar - Hidden on mobile, shown on desktop */}
+            <aside className="hidden lg:block space-y-6">
               <AdPlaceholder variant="sidebar" />
               
               <div className="bg-card rounded-xl border border-border p-6">
@@ -191,6 +208,11 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {/* Bottom Mobile Ad */}
+      <div className="container py-6 lg:hidden">
+        <AdPlaceholder variant="banner" />
+      </div>
     </Layout>
   );
 }
