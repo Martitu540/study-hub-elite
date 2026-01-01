@@ -99,6 +99,9 @@ export function Footer() {
           <p className="text-small text-muted-foreground">
             © {new Date().getFullYear()} StudyFlow. All rights reserved.
           </p>
+          <p className="text-xs text-muted-foreground/70 text-center sm:text-right max-w-md">
+            This site contains affiliate links. If you use them, I may earn a small commission at no extra cost to you.
+          </p>
         </div>
       </div>
     </footer>

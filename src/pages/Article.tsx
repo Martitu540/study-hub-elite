@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { AdPlaceholder } from "@/components/AdPlaceholder";
 import { ArticleCard } from "@/components/ArticleCard";
+import { AffiliateBox, articleAffiliates } from "@/components/AffiliateBox";
 import { Button } from "@/components/ui/button";
 import { Clock, Calendar, ArrowLeft, Share2, Bookmark, HelpCircle } from "lucide-react";
 import { getArticleBySlug, getRelatedArticles, articles } from "@/data/articles";
@@ -156,6 +157,15 @@ export default function Article() {
                 <h2>Conclusion</h2>
                 <p>{article.content.conclusion}</p>
               </div>
+
+              {/* Affiliate Recommendation - One per article */}
+              {slug && articleAffiliates[slug] && (
+                <AffiliateBox
+                  title={articleAffiliates[slug].title}
+                  description={articleAffiliates[slug].description}
+                  href={articleAffiliates[slug].href}
+                />
+              )}
 
               {/* Mobile Ad before FAQ */}
               <div className="lg:hidden my-6">
