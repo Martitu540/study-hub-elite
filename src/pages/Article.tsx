@@ -4,7 +4,7 @@ import { AdPlaceholder } from "@/components/AdPlaceholder";
 import { ArticleCard } from "@/components/ArticleCard";
 import { AffiliateBox, articleAffiliates } from "@/components/AffiliateBox";
 import { Button } from "@/components/ui/button";
-import { Clock, Calendar, ArrowLeft, Share2, HelpCircle } from "lucide-react";
+import { Clock, Calendar, ArrowLeft, Share2, HelpCircle, Copy, Check } from "lucide-react";
 import { toast } from "sonner";
 import { getArticleBySlug, getRelatedArticles, articles } from "@/data/articles";
 import {
@@ -13,10 +13,56 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { useState } from "react";
 
 export default function Article() {
   const { slug } = useParams();
   const article = getArticleBySlug(slug || "");
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyLink = async () => {
+    await navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    toast.success("Link copied to clipboard!");
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const shareUrl = typeof window !== "undefined" ? window.location.href : "";
+  const shareTitle = article?.title || "Check out this article";
+
+  const shareOptions = [
+    {
+      name: "Twitter / X",
+      icon: "𝕏",
+      action: () => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTitle)}&url=${encodeURIComponent(shareUrl)}`, "_blank"),
+    },
+    {
+      name: "Facebook",
+      icon: "f",
+      action: () => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, "_blank"),
+    },
+    {
+      name: "LinkedIn",
+      icon: "in",
+      action: () => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, "_blank"),
+    },
+    {
+      name: "WhatsApp",
+      icon: "📱",
+      action: () => window.open(`https://wa.me/?text=${encodeURIComponent(shareTitle + " " + shareUrl)}`, "_blank"),
+    },
+    {
+      name: "Email",
+      icon: "✉️",
+      action: () => window.open(`mailto:?subject=${encodeURIComponent(shareTitle)}&body=${encodeURIComponent("Check out this article: " + shareUrl)}`, "_blank"),
+    },
+  ];
 
   // Fallback for unknown articles
   if (!article) {
@@ -216,28 +262,34 @@ export default function Article() {
 
               {/* Share Actions */}
               <div className="mt-8 md:mt-10 pt-6 md:pt-8 border-t border-divider flex flex-wrap items-center gap-2 md:gap-3">
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  onClick={async () => {
-                    const url = window.location.href;
-                    const title = article.title;
-                    
-                    if (navigator.share) {
-                      try {
-                        await navigator.share({ title, url });
-                      } catch (err) {
-                        // User cancelled or share failed silently
-                      }
-                    } else {
-                      await navigator.clipboard.writeText(url);
-                      toast.success("Link copied to clipboard!");
-                    }
-                  }}
-                >
-                  <Share2 className="w-4 h-4" />
-                  Share
-                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" size="sm">
+                      <Share2 className="w-4 h-4" />
+                      Share
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start" className="w-48">
+                    {shareOptions.map((option) => (
+                      <DropdownMenuItem 
+                        key={option.name} 
+                        onClick={option.action}
+                        className="cursor-pointer"
+                      >
+                        <span className="w-6 text-center font-semibold">{option.icon}</span>
+                        {option.name}
+                      </DropdownMenuItem>
+                    ))}
+                    <DropdownMenuItem onClick={handleCopyLink} className="cursor-pointer">
+                      {copied ? (
+                        <Check className="w-4 h-4 ml-1 mr-2 text-green-500" />
+                      ) : (
+                        <Copy className="w-4 h-4 ml-1 mr-2" />
+                      )}
+                      {copied ? "Copied!" : "Copy Link"}
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
 
               {/* Related Articles */}
