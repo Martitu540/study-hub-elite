@@ -130,20 +130,33 @@ export default function Category() {
         </header>
 
         {/* Content */}
-        <div className="container py-8 md:py-12">
-          <div className="grid lg:grid-cols-3 gap-8">
+        <div className="container py-6 md:py-12">
+          <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
             {/* Main Content */}
             <div className="lg:col-span-2">
               {isToolsPage ? (
                 <>
-                  <div className="grid sm:grid-cols-2 gap-4 stagger-children">
-                    {tools.map((tool) => (
-                      <ToolCard key={tool.slug} {...tool} />
+                  <div className="grid sm:grid-cols-2 gap-3 md:gap-4 stagger-children">
+                    {tools.map((tool, index) => (
+                      <div key={tool.slug}>
+                        <ToolCard {...tool} />
+                        {/* Mobile ad after 2nd tool */}
+                        {index === 1 && (
+                          <div className="sm:hidden mt-3">
+                            <AdPlaceholder variant="inline" />
+                          </div>
+                        )}
+                      </div>
                     ))}
                   </div>
                   
+                  {/* Mobile Ad */}
+                  <div className="lg:hidden mt-6">
+                    <AdPlaceholder variant="banner" />
+                  </div>
+                  
                   {/* SEO Content for Tools Page */}
-                  <section className="mt-12 prose">
+                  <section className="mt-8 md:mt-12 prose prose-sm md:prose">
                     <h2>Free Online Study Tools</h2>
                     <p>
                       Our study tools are designed to help students learn more effectively using 
@@ -182,13 +195,13 @@ export default function Category() {
                 </>
               ) : (
                 <>
-                  {/* Category Filters */}
-                  <div className="flex flex-wrap gap-2 mb-8">
+                  {/* Category Filters - Scrollable on mobile */}
+                  <div className="flex gap-2 mb-6 md:mb-8 overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0 md:flex-wrap scrollbar-hide">
                     {categories.map((cat) => (
                       <Link
                         key={cat.slug}
                         to={`/category/${cat.slug}`}
-                        className={`px-4 py-2 text-caption font-medium rounded-lg transition-colors ${
+                        className={`px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-caption font-medium rounded-lg transition-colors whitespace-nowrap flex-shrink-0 ${
                           slug === cat.slug
                             ? "bg-primary text-primary-foreground"
                             : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
@@ -199,22 +212,29 @@ export default function Category() {
                     ))}
                   </div>
 
-                  <div className="space-y-5 stagger-children">
-                    {categoryArticles.map((article) => (
-                      <ArticleCard
-                        key={article.slug}
-                        title={article.title}
-                        excerpt={article.excerpt}
-                        category={article.category}
-                        readTime={article.readTime}
-                        slug={article.slug}
-                      />
+                  <div className="space-y-4 md:space-y-5 stagger-children">
+                    {categoryArticles.map((article, index) => (
+                      <div key={article.slug}>
+                        <ArticleCard
+                          title={article.title}
+                          excerpt={article.excerpt}
+                          category={article.category}
+                          readTime={article.readTime}
+                          slug={article.slug}
+                        />
+                        {/* Mobile inline ad after 2nd article */}
+                        {index === 1 && (
+                          <div className="mt-4 lg:hidden">
+                            <AdPlaceholder variant="inline" />
+                          </div>
+                        )}
+                      </div>
                     ))}
                   </div>
 
                   {categoryArticles.length === 0 && (
-                    <div className="text-center py-12">
-                      <BookOpen className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                    <div className="text-center py-8 md:py-12">
+                      <BookOpen className="w-10 h-10 md:w-12 md:h-12 text-muted-foreground mx-auto mb-4" />
                       <h3 className="font-semibold text-heading mb-2">No articles yet</h3>
                       <p className="text-caption text-muted-foreground mb-4">
                         Check back soon for new content in this category.
@@ -227,16 +247,16 @@ export default function Category() {
 
                   {/* SEO Content for Article Categories */}
                   {category.seoContent && categoryArticles.length > 0 && (
-                    <section className="mt-12 pt-8 border-t border-divider">
-                      <p className="text-body text-muted-foreground">{category.seoContent}</p>
+                    <section className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-divider">
+                      <p className="text-sm md:text-body text-muted-foreground">{category.seoContent}</p>
                     </section>
                   )}
                 </>
               )}
             </div>
 
-            {/* Sidebar */}
-            <aside className="space-y-6">
+            {/* Sidebar - Hidden on mobile */}
+            <aside className="hidden lg:block space-y-6">
               <AdPlaceholder variant="sidebar" />
 
               {!isToolsPage && (
@@ -295,6 +315,11 @@ export default function Category() {
 
               <AdPlaceholder variant="sidebar" />
             </aside>
+          </div>
+
+          {/* Bottom Mobile Ad */}
+          <div className="lg:hidden mt-6">
+            <AdPlaceholder variant="banner" />
           </div>
         </div>
       </div>
