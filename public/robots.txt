@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://study-hub-elite.pages.dev/map.xml
+Sitemap: https://study-hub-elite.pages.dev/sitemap.xml
