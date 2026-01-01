@@ -4,7 +4,8 @@ import { AdPlaceholder } from "@/components/AdPlaceholder";
 import { ArticleCard } from "@/components/ArticleCard";
 import { AffiliateBox, articleAffiliates } from "@/components/AffiliateBox";
 import { Button } from "@/components/ui/button";
-import { Clock, Calendar, ArrowLeft, Share2, Bookmark, HelpCircle } from "lucide-react";
+import { Clock, Calendar, ArrowLeft, Share2, HelpCircle } from "lucide-react";
+import { toast } from "sonner";
 import { getArticleBySlug, getRelatedArticles, articles } from "@/data/articles";
 import {
   Accordion,
@@ -215,13 +216,27 @@ export default function Article() {
 
               {/* Share Actions */}
               <div className="mt-8 md:mt-10 pt-6 md:pt-8 border-t border-divider flex flex-wrap items-center gap-2 md:gap-3">
-                <Button variant="outline" size="sm">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={async () => {
+                    const url = window.location.href;
+                    const title = article.title;
+                    
+                    if (navigator.share) {
+                      try {
+                        await navigator.share({ title, url });
+                      } catch (err) {
+                        // User cancelled or share failed silently
+                      }
+                    } else {
+                      await navigator.clipboard.writeText(url);
+                      toast.success("Link copied to clipboard!");
+                    }
+                  }}
+                >
                   <Share2 className="w-4 h-4" />
                   Share
-                </Button>
-                <Button variant="outline" size="sm">
-                  <Bookmark className="w-4 h-4" />
-                  Save
                 </Button>
               </div>
 
