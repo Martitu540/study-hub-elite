@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 
-const BUYMEACOFFEE_USERNAME = "yourusername"; // Replace with your Buy Me a Coffee username
+const BUYMEACOFFEE_USERNAME = "Martitu"; // Replace with your Buy Me a Coffee username
 
 const fixedAmounts = [
   { amount: 3, label: "1 Coffee", emoji: "☕" },
