@@ -2,6 +2,26 @@
 
 Use this schema to generate SEO-optimized articles for StudyFlow. Each article should target long-tail keywords that students search for.
 
+---
+
+## Existing Articles (DO NOT DUPLICATE)
+
+| # | Slug | Title | Category |
+|---|------|-------|----------|
+| 1 | `how-to-study-effectively-for-exams` | How to Study Effectively for Exams (Science-Backed Methods) | Study Tips |
+| 2 | `pomodoro-technique-explained-for-students` | Pomodoro Technique Explained for Students (With Examples) | Study Tips |
+| 3 | `daily-study-routine-that-works` | How to Build a Daily Study Routine That Actually Works | Study Skills |
+| 4 | `pomodoro-technique-guide` | The Pomodoro Technique: A Complete Guide to Focused Studying | Study Tips |
+| 5 | `effective-study-notes` | How to Create Effective Study Notes That Actually Work | Study Tips |
+| 6 | `active-recall-spaced-repetition` | Understanding Active Recall and Spaced Repetition | Learning Science |
+| 7 | `finals-study-plan` | Preparing for Finals: Your 4-Week Study Plan | Exam Prep |
+| 8 | `managing-test-anxiety` | Managing Test Anxiety: Practical Strategies That Work | Wellness |
+| 9 | `student-productivity-apps` | Best Apps and Tools for Student Productivity in 2024 | Resources |
+
+**Total: 9 articles**
+
+---
+
 ## TypeScript Interface
 
 ```typescript
