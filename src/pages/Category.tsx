@@ -131,28 +131,15 @@ export default function Category() {
 
         {/* Content */}
         <div className="container py-6 md:py-12">
-          <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid lg:grid-cols-[1fr_300px] gap-6 lg:gap-8">
             {/* Main Content */}
-            <div className="lg:col-span-2">
+            <div className="min-w-0">
               {isToolsPage ? (
                 <>
                   <div className="grid sm:grid-cols-2 gap-3 md:gap-4 stagger-children">
-                    {tools.map((tool, index) => (
-                      <div key={tool.slug}>
-                        <ToolCard {...tool} />
-                        {/* Mobile ad after 2nd tool */}
-                        {index === 1 && (
-                          <div className="sm:hidden mt-3">
-                            <AdPlaceholder variant="inline" />
-                          </div>
-                        )}
-                      </div>
+                    {tools.map((tool) => (
+                      <ToolCard key={tool.slug} {...tool} />
                     ))}
-                  </div>
-                  
-                  {/* Mobile Ad */}
-                  <div className="lg:hidden mt-6">
-                    <AdPlaceholder variant="banner" />
                   </div>
                   
                   {/* SEO Content for Tools Page */}
@@ -213,22 +200,15 @@ export default function Category() {
                   </div>
 
                   <div className="space-y-4 md:space-y-5 stagger-children">
-                    {categoryArticles.map((article, index) => (
-                      <div key={article.slug}>
-                        <ArticleCard
-                          title={article.title}
-                          excerpt={article.excerpt}
-                          category={article.category}
-                          readTime={article.readTime}
-                          slug={article.slug}
-                        />
-                        {/* Mobile inline ad after 2nd article */}
-                        {index === 1 && (
-                          <div className="mt-4 lg:hidden">
-                            <AdPlaceholder variant="inline" />
-                          </div>
-                        )}
-                      </div>
+                    {categoryArticles.map((article) => (
+                      <ArticleCard
+                        key={article.slug}
+                        title={article.title}
+                        excerpt={article.excerpt}
+                        category={article.category}
+                        readTime={article.readTime}
+                        slug={article.slug}
+                      />
                     ))}
                   </div>
 
@@ -255,9 +235,13 @@ export default function Category() {
               )}
             </div>
 
-            {/* Sidebar - Hidden on mobile */}
-            <aside className="hidden lg:block space-y-6">
-              <AdPlaceholder variant="sidebar" />
+            {/* Sidebar */}
+            <aside className="space-y-6">
+              {/* Ad Placement - visible on all devices */}
+              <div className="bg-surface-elevated rounded-xl p-4 border border-divider">
+                <p className="text-xs text-muted-foreground mb-2 text-center">Sponsored</p>
+                <AdPlaceholder variant="sidebar" />
+              </div>
 
               {!isToolsPage && (
                 <div className="bg-card rounded-xl border border-border p-6">
@@ -312,14 +296,7 @@ export default function Category() {
                   </Link>
                 </Button>
               </div>
-
-              <AdPlaceholder variant="sidebar" />
             </aside>
-          </div>
-
-          {/* Bottom Mobile Ad */}
-          <div className="lg:hidden mt-6">
-            <AdPlaceholder variant="banner" />
           </div>
         </div>
       </div>
