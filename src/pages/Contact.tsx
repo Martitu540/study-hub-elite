@@ -3,6 +3,7 @@ import { Mail, MessageSquare, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { AdPlaceholder } from "@/components/AdPlaceholder";
+import { AdBanner300x250 } from "@/components/AdBanner300x250";
 
 export default function Contact() {
   const { toast } = useToast();
@@ -101,7 +102,7 @@ export default function Contact() {
           <aside className="hidden lg:block space-y-6">
             <div className="bg-surface-elevated rounded-xl p-4 border border-divider">
               <p className="text-xs text-muted-foreground mb-2 text-center">Sponsored</p>
-              <AdPlaceholder variant="sidebar" />
+              <AdBanner300x250 />
             </div>
           </aside>
         </div>

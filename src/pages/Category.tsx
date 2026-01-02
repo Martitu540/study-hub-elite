@@ -3,6 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { ArticleCard } from "@/components/ArticleCard";
 import { ToolCard } from "@/components/ToolCard";
 import { AdPlaceholder } from "@/components/AdPlaceholder";
+import { AdBanner300x250 } from "@/components/AdBanner300x250";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calculator, Clock, FileText, Brain, BookOpen } from "lucide-react";
 import { articles, getArticlesByCategory } from "@/data/articles";
@@ -240,7 +241,7 @@ export default function Category() {
               {/* Ad Placement - visible on all devices */}
               <div className="bg-surface-elevated rounded-xl p-4 border border-divider">
                 <p className="text-xs text-muted-foreground mb-2 text-center">Sponsored</p>
-                <AdPlaceholder variant="sidebar" />
+                <AdBanner300x250 />
               </div>
 
               {!isToolsPage && (
