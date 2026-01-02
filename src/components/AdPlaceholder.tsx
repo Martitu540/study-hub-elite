@@ -69,10 +69,14 @@ export const AdPlaceholder = forwardRef<HTMLDivElement, AdPlaceholderProps>(
         ref={containerRef}
         data-ad-slot={uniqueId}
         className={cn(
-          "rounded-lg overflow-hidden",
+          "rounded-lg overflow-hidden relative",
           sizes[variant],
           className
         )}
+        style={{ 
+          contain: 'layout style',
+          isolation: 'isolate'
+        }}
       />
     );
   }
