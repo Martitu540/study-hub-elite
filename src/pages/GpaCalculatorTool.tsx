@@ -418,7 +418,10 @@ export default function GpaCalculatorTool() {
 
             {/* Sidebar */}
             <aside className="space-y-6">
-              <AdPlaceholder variant="sidebar" />
+              <div className="bg-surface-elevated rounded-xl p-4 border border-divider">
+                <p className="text-xs text-muted-foreground mb-2 text-center">Sponsored</p>
+                <AdPlaceholder variant="sidebar" />
+              </div>
 
               <div className="bg-card rounded-xl border border-border p-6">
                 <h3 className="font-semibold text-heading mb-4">Quick Tips</h3>
