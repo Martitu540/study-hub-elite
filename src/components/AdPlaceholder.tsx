@@ -1,62 +1,81 @@
 import { cn } from "@/lib/utils";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useId, forwardRef } from "react";
 
-export function AdPlaceholder({ variant = "banner", className }: any) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const scriptIdRef = useRef<string>(`adsterra-${Math.random().toString(36).substr(2, 9)}`);
+// Adsterra Native Banner configuration
+const ADSTERRA_KEY = "da83e1b7e56a01ecf7ab3b201563cd2d";
+const ADSTERRA_SCRIPT_URL = `https://pl28377931.effectivegatecpm.com/${ADSTERRA_KEY}/invoke.js`;
 
-  const sizes = {
-    banner: "min-h-[100px] md:min-h-[120px]",
-    sidebar: "min-h-[250px]",
-    inline: "min-h-[90px] md:min-h-[100px]",
-  };
+// Track if script has been loaded globally to avoid duplicates
+let scriptLoaded = false;
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    // Create a unique container for this ad instance
-    const adContainer = document.createElement("div");
-    adContainer.id = scriptIdRef.current;
-    container.appendChild(adContainer);
-
-    const script = document.createElement("script");
-    script.src =
-      "https://pl28377931.effectivegatecpm.com/da83e1b7e56a01ecf7ab3b201563cd2d/invoke.js";
-
-    // Dynamically inserted scripts are async by default.
-    // Some ad tags rely on synchronous execution.
-    script.async = false;
-    script.setAttribute("data-cfasync", "false");
-
-    script.onload = () => {
-      // eslint-disable-next-line no-console
-      console.log("[Adsterra] script loaded", { id: adContainer.id });
-    };
-
-    script.onerror = () => {
-      // eslint-disable-next-line no-console
-      console.warn("[Adsterra] script failed to load", {
-        src: script.src,
-        id: adContainer.id,
-      });
-    };
-
-    adContainer.appendChild(script);
-
-    return () => {
-      if (container) container.innerHTML = "";
-    };
-  }, []);
-
-  return (
-    <div
-      ref={containerRef}
-      className={cn(
-        "border border-dashed border-border rounded-lg overflow-hidden flex items-center justify-center",
-        sizes[variant],
-        className
-      )}
-    />
-  );
+interface AdPlaceholderProps {
+  variant?: "banner" | "sidebar" | "inline";
+  className?: string;
 }
+
+export const AdPlaceholder = forwardRef<HTMLDivElement, AdPlaceholderProps>(
+  ({ variant = "banner", className }, ref) => {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const uniqueId = useId();
+    const containerId = `container-${ADSTERRA_KEY}`;
+
+    const sizes = {
+      banner: "min-h-[100px] md:min-h-[120px]",
+      sidebar: "min-h-[250px]",
+      inline: "min-h-[90px] md:min-h-[100px]",
+    };
+
+    useEffect(() => {
+      const container = containerRef.current;
+      if (!container) return;
+
+      // Check if there's already a container with this ID on the page
+      const existingContainer = document.getElementById(containerId);
+      
+      if (existingContainer && existingContainer !== container.firstChild) {
+        // Another ad instance already claimed this ID - limitation of this ad type
+        return;
+      }
+
+      // Create the container with the EXACT ID Adsterra expects
+      const adContainer = document.createElement("div");
+      adContainer.id = containerId;
+      container.appendChild(adContainer);
+
+      // Only load the script once per page
+      if (!scriptLoaded) {
+        scriptLoaded = true;
+        
+        const script = document.createElement("script");
+        script.src = ADSTERRA_SCRIPT_URL;
+        script.async = true;
+        script.setAttribute("data-cfasync", "false");
+
+        script.onerror = () => {
+          console.warn("[Adsterra] Script failed to load - possibly blocked by ad blocker");
+          scriptLoaded = false;
+        };
+
+        document.body.appendChild(script);
+      }
+
+      return () => {
+        if (container) container.innerHTML = "";
+      };
+    }, [containerId]);
+
+    return (
+      <div
+        ref={containerRef}
+        data-ad-slot={uniqueId}
+        className={cn(
+          "rounded-lg overflow-hidden",
+          sizes[variant],
+          className
+        )}
+      />
+    );
+  }
+);
+
+AdPlaceholder.displayName = "AdPlaceholder";
