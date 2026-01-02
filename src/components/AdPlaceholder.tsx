@@ -21,15 +21,31 @@ export function AdPlaceholder({ variant = "banner", className }: any) {
     container.appendChild(adContainer);
 
     const script = document.createElement("script");
-    script.src = "https://pl28377931.effectivegatecpm.com/da83e1b7e56a01ecf7ab3b201563cd2d/invoke.js";
-    script.async = true;
+    script.src =
+      "https://pl28377931.effectivegatecpm.com/da83e1b7e56a01ecf7ab3b201563cd2d/invoke.js";
+
+    // Dynamically inserted scripts are async by default.
+    // Some ad tags rely on synchronous execution.
+    script.async = false;
     script.setAttribute("data-cfasync", "false");
-    container.appendChild(script);
+
+    script.onload = () => {
+      // eslint-disable-next-line no-console
+      console.log("[Adsterra] script loaded", { id: adContainer.id });
+    };
+
+    script.onerror = () => {
+      // eslint-disable-next-line no-console
+      console.warn("[Adsterra] script failed to load", {
+        src: script.src,
+        id: adContainer.id,
+      });
+    };
+
+    adContainer.appendChild(script);
 
     return () => {
-      if (container) {
-        container.innerHTML = "";
-      }
+      if (container) container.innerHTML = "";
     };
   }, []);
 
