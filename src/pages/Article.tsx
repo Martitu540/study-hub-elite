@@ -315,7 +315,10 @@ export default function Article() {
             {/* Sidebar - Hidden on mobile */}
             <aside className="hidden lg:block space-y-6">
               <div className="sticky top-24">
-                <AdPlaceholder variant="sidebar" />
+                <div className="bg-surface-elevated rounded-xl p-4 border border-divider">
+                  <p className="text-xs text-muted-foreground mb-2 text-center">Sponsored</p>
+                  <AdPlaceholder variant="sidebar" />
+                </div>
                 
                 <div className="mt-6 bg-accent rounded-xl p-6">
                   <h3 className="font-semibold text-heading mb-2">Try Our Pomodoro Timer</h3>

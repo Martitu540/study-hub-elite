@@ -99,8 +99,10 @@ export default function Contact() {
 
           {/* Sidebar - Desktop Only */}
           <aside className="hidden lg:block space-y-6">
-            <AdPlaceholder variant="sidebar" />
-            <AdPlaceholder variant="sidebar" />
+            <div className="bg-surface-elevated rounded-xl p-4 border border-divider">
+              <p className="text-xs text-muted-foreground mb-2 text-center">Sponsored</p>
+              <AdPlaceholder variant="sidebar" />
+            </div>
           </aside>
         </div>
 
