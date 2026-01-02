@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { AdPlaceholder } from "@/components/AdPlaceholder";
+import { AdBanner300x250 } from "@/components/AdBanner300x250";
 import { ToolCard } from "@/components/ToolCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -420,7 +421,7 @@ export default function GpaCalculatorTool() {
             <aside className="space-y-6">
               <div className="bg-surface-elevated rounded-xl p-4 border border-divider">
                 <p className="text-xs text-muted-foreground mb-2 text-center">Sponsored</p>
-                <AdPlaceholder variant="sidebar" />
+                <AdBanner300x250 />
               </div>
 
               <div className="bg-card rounded-xl border border-border p-6">

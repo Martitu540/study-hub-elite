@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { AdPlaceholder } from "@/components/AdPlaceholder";
+import { AdBanner300x250 } from "@/components/AdBanner300x250";
 import { ArticleCard } from "@/components/ArticleCard";
 import { AffiliateBox, articleAffiliates } from "@/components/AffiliateBox";
 import { Button } from "@/components/ui/button";
@@ -317,7 +318,7 @@ export default function Article() {
               <div className="sticky top-24">
                 <div className="bg-surface-elevated rounded-xl p-4 border border-divider">
                   <p className="text-xs text-muted-foreground mb-2 text-center">Sponsored</p>
-                  <AdPlaceholder variant="sidebar" />
+                  <AdBanner300x250 />
                 </div>
                 
                 <div className="mt-6 bg-accent rounded-xl p-6">
