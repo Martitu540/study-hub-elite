@@ -27,6 +27,93 @@ export interface ArticleContent {
 
 export const articles: ArticleData[] = [
   {
+  slug: "how-to-stop-procrastinating-on-homework",
+  title: "How to Stop Procrastinating on Homework (Proven Student Strategies)",
+  excerpt: "Struggling to start your homework? Learn practical, science-backed strategies to stop procrastinating, stay focused, and finish assignments on time.",
+  category: "Productivity",
+  readTime: "7 min read",
+  publishDate: "2026-01-02",
+  relatedTools: ["pomodoro-timer", "study-plan-generator"],
+  relatedArticles: [
+    "daily-study-routine-that-works",
+    "pomodoro-technique-explained-for-students",
+    "managing-test-anxiety"
+  ],
+  content: {
+    intro: "Procrastinating on homework is one of the most common struggles students face, even when assignments are important. The problem usually isn’t laziness, but feeling overwhelmed, bored, or unsure where to start. In this guide, you’ll learn practical, research-backed strategies to stop procrastinating and get your homework done efficiently.",
+    sections: [
+      {
+        heading: "Why Do Students Procrastinate on Homework?",
+        content: "Understanding why procrastination happens makes it easier to overcome. Most students delay homework because tasks feel too big, unclear, or emotionally uncomfortable.",
+        listItems: [
+          "Fear of failure or making mistakes",
+          "Assignments that feel boring or meaningless",
+          "Lack of clear instructions or starting point",
+          "Distractions from phone, social media, or games",
+          "Mental fatigue after a long school day"
+        ]
+      },
+      {
+        heading: "Break Homework Into Small, Actionable Steps",
+        content: "Large assignments trigger avoidance. Breaking homework into tiny, specific actions reduces resistance and makes starting much easier.",
+        listItems: [
+          "Rewrite the assignment in your own words",
+          "Set a goal like “work for 10 minutes” instead of “finish everything”",
+          "Start with the easiest question or task",
+          "Create a short checklist of steps",
+          "Focus on progress, not perfection"
+        ]
+      },
+      {
+        heading: "Use the Pomodoro Technique to Get Started",
+        content: "When motivation is low, relying on discipline works better than waiting to feel motivated. The Pomodoro Technique uses short, focused study sessions to reduce mental resistance.",
+        listItems: [
+          "Study for 25 minutes with full focus",
+          "Take a 5-minute break",
+          "Repeat 3–4 times, then take a longer break",
+          "Commit to just one Pomodoro to start",
+          "Stop when the timer ends to avoid burnout"
+        ]
+      },
+      {
+        heading: "Remove Distractions From Your Study Environment",
+        content: "Your environment strongly influences procrastination. Reducing distractions makes focus the default instead of a constant battle.",
+        listItems: [
+          "Put your phone in another room or use focus mode",
+          "Study at a clean desk with only needed materials",
+          "Use website blockers during homework time",
+          "Study at the same place every day",
+          "Tell others you’re unavailable for a short period"
+        ]
+      },
+      {
+        heading: "Reward Progress, Not Just Completion",
+        content: "Your brain responds better to immediate rewards than distant goals. Small rewards reinforce consistent homework habits.",
+        listItems: [
+          "Take a short walk after a study session",
+          "Watch one episode or video after finishing a task",
+          "Track completed homework on a visible checklist",
+          "Acknowledge effort, not just results"
+        ]
+      }
+    ],
+    conclusion: "Stopping procrastination on homework doesn’t require extreme discipline or long study hours. The key is lowering the barrier to starting, using focused time blocks, and creating a distraction-free environment. Tools like the Pomodoro Timer and Study Plan Generator can help you turn homework into a manageable daily habit instead of a constant source of stress.",
+    faq: [
+      {
+        question: "Why do I procrastinate even when homework is important?",
+        answer: "Procrastination is often driven by emotions like anxiety, boredom, or feeling overwhelmed—not laziness. Breaking tasks into small steps helps reduce this resistance."
+      },
+      {
+        question: "How can I start homework when I have zero motivation?",
+        answer: "Commit to working for just 5–10 minutes using a timer. Starting is usually the hardest part, and motivation often follows action."
+      },
+      {
+        question: "Does the Pomodoro Technique really help with procrastination?",
+        answer: "Yes. Short, timed work sessions make tasks feel less overwhelming and help students focus without burnout."
+      }
+    ],},},
+
+  {
   slug: "how-to-study-effectively-for-exams",
   title: "How to Study Effectively for Exams (Science-Backed Methods)",
   excerpt:
