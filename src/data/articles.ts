@@ -27,6 +27,162 @@ export interface ArticleContent {
 
 export const articles: ArticleData[] = [
   {
+  slug: "digital-vs-paper-notes-for-studying",
+  title: "Digital vs Paper Notes: Which Is Better for Studying?",
+  excerpt: "Should you take notes digitally or on paper? Compare retention, focus, and effectiveness to choose the best method for studying.",
+  category: "Study Skills",
+  readTime: "6 min read",
+  publishDate: "2026-01-02",
+  relatedTools: ["flashcard-maker"],
+  relatedArticles: [
+    "effective-study-notes"
+  ],
+  content: {
+    intro: "Choosing between digital and paper notes is a common dilemma for students. Each method has strengths depending on how you study.",
+    sections: [
+      {
+        heading: "Advantages of Paper Notes",
+        content: "Handwriting notes improves processing and memory."
+      },
+      {
+        heading: "Advantages of Digital Notes",
+        content: "Digital notes offer speed, organization, and searchability."
+      },
+      {
+        heading: "Which Note-Taking Method Is Best?",
+        content: "The best option depends on subject, learning style, and consistency."
+      }
+    ],
+    conclusion: "Both digital and paper notes can be effective. The best system is the one you actually use consistently and review regularly."
+  }
+}
+,
+  {
+  slug: "morning-vs-night-studying",
+  title: "Morning vs Night Studying: Which Is Better for Students?",
+  excerpt: "Is it better to study in the morning or at night? Learn how your brain works at different times and how to choose the best schedule.",
+  category: "Study Skills",
+  readTime: "5 min read",
+  publishDate: "2026-01-02",
+  relatedTools: ["study-plan-generator"],
+  relatedArticles: [
+    "daily-study-routine-that-works"
+  ],
+  content: {
+    intro: "Some students swear by early mornings, while others study best at night. The truth depends on biology, habits, and consistency.",
+    sections: [
+      {
+        heading: "Benefits of Studying in the Morning",
+        content: "Morning studying often comes with better focus and fewer distractions."
+      },
+      {
+        heading: "Benefits of Studying at Night",
+        content: "Night studying can work well for creative or quiet-focused tasks."
+      },
+      {
+        heading: "How to Choose the Best Time for You",
+        content: "Consistency matters more than the exact hour you study."
+      }
+    ],
+    conclusion: "There is no universal best time to study. Choose a schedule you can maintain consistently and align it with your energy levels."
+  }
+}
+,
+  {
+  slug: "how-to-memorize-fast-for-exams",
+  title: "How to Memorize Fast for Exams (Science-Backed Techniques)",
+  excerpt: "Need to memorize information quickly for an exam? Learn proven techniques to retain facts, formulas, and concepts in less time.",
+  category: "Study Tips",
+  readTime: "6 min read",
+  publishDate: "2026-01-02",
+  relatedTools: ["flashcard-maker", "pomodoro-timer"],
+  relatedArticles: [
+    "active-recall-spaced-repetition",
+    "effective-study-notes"
+  ],
+  content: {
+    intro: "When exams are close, students often search for ways to memorize faster. While shortcuts don’t exist, there are proven methods that dramatically improve retention in a short time.",
+    sections: [
+      {
+        heading: "Why Cramming Feels Effective but Fails",
+        content: "Cramming creates short-term familiarity but poor long-term recall."
+      },
+      {
+        heading: "Use Active Recall to Memorize Faster",
+        content: "Testing yourself forces your brain to retrieve information, strengthening memory.",
+        listItems: [
+          "Answer questions without notes",
+          "Use flashcards daily",
+          "Write everything you remember from memory",
+          "Check and correct immediately"
+        ]
+      },
+      {
+        heading: "Chunking and Association Techniques",
+        content: "Grouping information reduces cognitive load and improves recall.",
+        listItems: [
+          "Break material into small chunks",
+          "Create mental images",
+          "Link new info to what you already know"
+        ]
+      }
+    ],
+    conclusion: "To memorize fast for exams, focus on active recall, chunking, and focused study sessions. These methods save time and significantly improve exam performance."
+  }
+}
+,
+  {
+  slug: "best-way-to-study-for-multiple-exams",
+  title: "Best Way to Study for Multiple Exams Without Burning Out",
+  excerpt: "Have several exams at once? Learn how to prioritize subjects, manage time, and study effectively for multiple exams without stress or burnout.",
+  category: "Exam Prep",
+  readTime: "8 min read",
+  publishDate: "2026-01-02",
+  relatedTools: ["study-plan-generator", "pomodoro-timer"],
+  relatedArticles: [
+    "how-to-study-effectively-for-exams",
+    "daily-study-routine-that-works",
+    "finals-study-plan"
+  ],
+  content: {
+    intro: "Studying for multiple exams at the same time can feel overwhelming. Many students waste time switching between subjects without a clear strategy. This guide shows you a proven system to balance multiple exams while staying focused and efficient.",
+    sections: [
+      {
+        heading: "How to Prioritize Subjects When You Have Multiple Exams",
+        content: "Not all exams deserve equal attention. Smart prioritization helps you get the highest return for your study time.",
+        listItems: [
+          "List exams with dates and formats",
+          "Rank subjects by difficulty and importance",
+          "Allocate more time to high-impact exams",
+          "Avoid overstudying easy subjects"
+        ]
+      },
+      {
+        heading: "Create a Realistic Study Schedule",
+        content: "A structured plan prevents last-minute cramming and decision fatigue.",
+        listItems: [
+          "Study 2–3 subjects per day max",
+          "Rotate subjects to avoid mental fatigue",
+          "Schedule harder subjects earlier in the day",
+          "Include buffer time for revision"
+        ]
+      },
+      {
+        heading: "Use Active Study Methods for Faster Results",
+        content: "When time is limited, active recall beats passive rereading.",
+        listItems: [
+          "Practice questions and past exams",
+          "Flashcards for key concepts",
+          "Teaching material out loud",
+          "Timed study sessions"
+        ]
+      }
+    ],
+    conclusion: "The best way to study for multiple exams is strategic planning, smart prioritization, and active learning. Tools like the Study Plan Generator help you organize your workload, while the Pomodoro Timer keeps you focused without burnout."
+  }
+},
+
+  {
   slug: "how-to-stop-procrastinating-on-homework",
   title: "How to Stop Procrastinating on Homework (Proven Student Strategies)",
   excerpt: "Struggling to start your homework? Learn practical, science-backed strategies to stop procrastinating, stay focused, and finish assignments on time.",
