@@ -96,42 +96,6 @@ export default function Privacy() {
 
           <section className="mb-10">
             <h2 className="text-heading font-heading text-2xl font-semibold mb-4">
-              Third-Party Advertising
-            </h2>
-            <p className="text-body leading-relaxed mb-4">
-              We may display advertisements on our site through third-party advertising networks, 
-              including Google AdSense. These networks may use cookies to serve ads based on your 
-              prior visits to this or other websites.
-            </p>
-            <p className="text-body leading-relaxed mb-4">
-              Google's use of advertising cookies enables it and its partners to serve ads based 
-              on your visit to our site and/or other sites on the Internet.
-            </p>
-            <p className="text-body leading-relaxed">
-              You can opt out of personalized advertising by visiting{" "}
-              <a 
-                href="https://www.google.com/settings/ads" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                Google's Ads Settings
-              </a>
-              . You may also opt out of third-party vendor cookies by visiting the{" "}
-              <a 
-                href="https://optout.networkadvertising.org/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                Network Advertising Initiative opt-out page
-              </a>
-              .
-            </p>
-          </section>
-
-          <section className="mb-10">
-            <h2 className="text-heading font-heading text-2xl font-semibold mb-4">
               External Links
             </h2>
             <p className="text-body leading-relaxed">

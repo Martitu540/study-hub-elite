@@ -1,7 +1,5 @@
 import { useParams, Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
-import { AdPlaceholder } from "@/components/AdPlaceholder";
-import { AdBanner300x250 } from "@/components/AdBanner300x250";
 import { ArticleCard } from "@/components/ArticleCard";
 import { AffiliateBox, articleAffiliates } from "@/components/AffiliateBox";
 import { Button } from "@/components/ui/button";
@@ -185,20 +183,13 @@ export default function Article() {
                   <div key={index}>
                     <h2>{section.heading}</h2>
                     <p>{section.content}</p>
-                    {section.listItems && (
-                      <ul>
-                        {section.listItems.map((item, idx) => (
-                          <li key={idx}>{item}</li>
-                        ))}
-                      </ul>
-                    )}
-                    
-                    {/* Insert inline ad after second section */}
-                    {index === 1 && (
-                      <div className="my-6 md:my-8 not-prose">
-                        <AdPlaceholder variant="inline" />
-                      </div>
-                    )}
+                {section.listItems && (
+                  <ul>
+                    {section.listItems.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                )}
                   </div>
                 ))}
 
@@ -214,11 +205,6 @@ export default function Article() {
                   href={articleAffiliates[slug].href}
                 />
               )}
-
-              {/* Mobile Ad before FAQ */}
-              <div className="lg:hidden my-6">
-                <AdPlaceholder variant="banner" />
-              </div>
 
               {/* FAQ Section */}
               {article.content.faq && article.content.faq.length > 0 && (
@@ -316,11 +302,6 @@ export default function Article() {
             {/* Sidebar - Hidden on mobile */}
             <aside className="hidden lg:block space-y-6">
               <div className="sticky top-24">
-                <div className="bg-surface-elevated rounded-xl p-4 border border-divider">
-                  <p className="text-xs text-muted-foreground mb-2 text-center">Sponsored</p>
-                  <AdBanner300x250 />
-                </div>
-                
                 <div className="mt-6 bg-accent rounded-xl p-6">
                   <h3 className="font-semibold text-heading mb-2">Try Our Pomodoro Timer</h3>
                   <p className="text-caption text-body mb-4">
@@ -348,11 +329,6 @@ export default function Article() {
                 </div>
               </div>
             </aside>
-          </div>
-
-          {/* Bottom Mobile Ad */}
-          <div className="lg:hidden mt-6">
-            <AdPlaceholder variant="banner" />
           </div>
         </div>
       </article>

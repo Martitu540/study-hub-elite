@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
-import { AdPlaceholder } from "@/components/AdPlaceholder";
-import { AdBanner300x250 } from "@/components/AdBanner300x250";
 import { ToolCard } from "@/components/ToolCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -270,11 +268,6 @@ export default function GpaCalculatorTool() {
                 )}
               </div>
 
-              {/* Ad Banner */}
-              <div className="mt-8">
-                <AdPlaceholder variant="banner" />
-              </div>
-
               {/* SEO Content */}
               <section className="mt-10">
                 <h2 className="text-subtitle font-bold text-heading mb-4">
@@ -419,11 +412,6 @@ export default function GpaCalculatorTool() {
 
             {/* Sidebar */}
             <aside className="space-y-6">
-              <div className="bg-surface-elevated rounded-xl p-4 border border-divider">
-                <p className="text-xs text-muted-foreground mb-2 text-center">Sponsored</p>
-                <AdBanner300x250 />
-              </div>
-
               <div className="bg-card rounded-xl border border-border p-6">
                 <h3 className="font-semibold text-heading mb-4">Quick Tips</h3>
                 <ul className="space-y-3 text-caption text-body">
@@ -457,8 +445,6 @@ export default function GpaCalculatorTool() {
                   <Link to="/tool/study-plan-generator">Get Started</Link>
                 </Button>
               </div>
-
-              <AdPlaceholder variant="sidebar" />
             </aside>
           </div>
         </div>

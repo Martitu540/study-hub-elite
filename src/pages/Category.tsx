@@ -2,8 +2,6 @@ import { useParams, Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { ArticleCard } from "@/components/ArticleCard";
 import { ToolCard } from "@/components/ToolCard";
-import { AdPlaceholder } from "@/components/AdPlaceholder";
-import { AdBanner300x250 } from "@/components/AdBanner300x250";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calculator, Clock, FileText, Brain, BookOpen } from "lucide-react";
 import { articles, getArticlesByCategory } from "@/data/articles";
@@ -238,12 +236,6 @@ export default function Category() {
 
             {/* Sidebar */}
             <aside className="space-y-6">
-              {/* Ad Placement - visible on all devices */}
-              <div className="bg-surface-elevated rounded-xl p-4 border border-divider">
-                <p className="text-xs text-muted-foreground mb-2 text-center">Sponsored</p>
-                <AdBanner300x250 />
-              </div>
-
               {!isToolsPage && (
                 <div className="bg-card rounded-xl border border-border p-6">
                   <h3 className="font-semibold text-heading mb-4">Popular Tools</h3>

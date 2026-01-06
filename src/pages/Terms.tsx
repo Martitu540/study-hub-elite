@@ -154,43 +154,32 @@ export default function Terms() {
 
           <section className="mb-10">
             <h2 className="text-heading font-heading text-2xl font-semibold mb-4">
-              7. Advertisements
+              7. Availability
             </h2>
             <p className="text-body leading-relaxed">
-              We may display advertisements to support the free availability of our tools. 
-              These ads are served by third-party networks and are subject to their own terms 
-              and privacy policies. We try to ensure ads are appropriate for our educational audience.
-            </p>
-          </section>
-
-          <section className="mb-10">
-            <h2 className="text-heading font-heading text-2xl font-semibold mb-4">
-              8. Availability
-            </h2>
-            <p className="text-body leading-relaxed">
-              We strive to keep StudyFlow available, but we cannot guarantee uninterrupted access. 
-              The site may occasionally be unavailable for maintenance or due to technical issues. 
+              We strive to keep StudyFlow available, but we cannot guarantee uninterrupted access.
+              The site may occasionally be unavailable for maintenance or due to technical issues.
               We are not liable for any inconvenience caused by downtime.
             </p>
           </section>
 
           <section className="mb-10">
             <h2 className="text-heading font-heading text-2xl font-semibold mb-4">
-              9. Changes to These Terms
+              8. Changes to These Terms
             </h2>
             <p className="text-body leading-relaxed">
-              We may update these terms occasionally. Continued use of StudyFlow after changes 
+              We may update these terms occasionally. Continued use of StudyFlow after changes
               means you accept the new terms. We encourage you to review this page periodically.
             </p>
           </section>
 
           <section className="mb-10">
             <h2 className="text-heading font-heading text-2xl font-semibold mb-4">
-              10. Limitation of Liability
+              9. Limitation of Liability
             </h2>
             <p className="text-body leading-relaxed">
-              StudyFlow is provided "as is" without warranties of any kind. We are not liable 
-              for any damages arising from your use of our website or tools. This includes, 
+              StudyFlow is provided "as is" without warranties of any kind. We are not liable
+              for any damages arising from your use of our website or tools. This includes,
               but is not limited to, loss of data stored in your browser's local storage.
             </p>
           </section>
