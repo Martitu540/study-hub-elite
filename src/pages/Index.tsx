@@ -1,8 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { ArticleCard } from "@/components/ArticleCard";
 import { ToolCard } from "@/components/ToolCard";
-import { AdPlaceholder } from "@/components/AdPlaceholder";
-import { AdBanner300x250 } from "@/components/AdBanner300x250";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calculator, Clock, FileText, CalendarDays, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -100,16 +98,6 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Mobile Ad After Featured */}
-      <div className="container md:hidden pb-4">
-        <AdPlaceholder variant="inline" />
-      </div>
-
-      {/* Ad Banner - Desktop */}
-      <div className="container hidden md:block">
-        <AdPlaceholder variant="banner" />
-      </div>
-
       {/* Tools Section */}
       <section className="container py-8 md:py-16">
         <div className="flex items-center justify-between mb-6 md:mb-8">
@@ -133,11 +121,6 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Mobile Ad After Tools */}
-      <div className="container md:hidden pb-4">
-        <AdPlaceholder variant="inline" />
-      </div>
-
       {/* Latest Articles with Sidebar */}
       <section className="bg-surface border-y border-divider">
         <div className="container py-8 md:py-16">
@@ -155,12 +138,6 @@ export default function Index() {
                       readTime={article.readTime}
                       slug={article.slug}
                     />
-                    {/* Mobile inline ad after first article */}
-                    {index === 0 && (
-                      <div className="mt-4 lg:hidden">
-                        <AdPlaceholder variant="inline" />
-                      </div>
-                    )}
                   </div>
                 ))}
               </div>
@@ -176,11 +153,6 @@ export default function Index() {
 
             {/* Sidebar - Hidden on mobile, shown on desktop */}
             <aside className="hidden lg:block space-y-6">
-              <div className="bg-surface-elevated rounded-xl p-4 border border-divider">
-                <p className="text-xs text-muted-foreground mb-2 text-center">Sponsored</p>
-                <AdBanner300x250 />
-              </div>
-              
               <div className="bg-card rounded-xl border border-border p-6">
                 <h3 className="font-semibold text-heading mb-4">Categories</h3>
                 <ul className="space-y-2">
@@ -212,11 +184,6 @@ export default function Index() {
           </div>
         </div>
       </section>
-
-      {/* Bottom Mobile Ad */}
-      <div className="container py-6 lg:hidden">
-        <AdPlaceholder variant="banner" />
-      </div>
     </Layout>
   );
 }
